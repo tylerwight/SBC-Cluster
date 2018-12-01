@@ -36,7 +36,7 @@ curl -sSL get.docker.com > get_docker.sh
 #so we can choose to install a specific version
 sed -i -e 's/$sh_c "$pkg_manager install -y -q docker-ce/#$sh_c "$pkg_manager install -y -q docker-ce/g' get_docker.sh
 sed -i -e 's/$sh_c "apt-get install -y -qq --no-install-recommends docker-ce/#$sh_c "apt-get install -y -qq --no-install-recommends docker-ce/g' get_docker.sh
-
+sh get_docker.sh
 sudo apt-cache madison docker-ce
 sudo apt-get install -y docker-ce=18.06.1~ce~3-0~raspbian
 
