@@ -10,11 +10,11 @@ fi
 
 #set hostname
 echo "What hostname do you want to use?"
-read hostname
-echo "setting hostname to $hostname"
-sudo echo "$hostname" > /etc/hostname
-sudo sed -i s/raspberrypi/$hostname/g /etc/hosts
-hostnamectl set-hostname '$hostname'
+read myhostname
+echo "setting hostname to $myhostname"
+echo "$myhostname" > /etc/hostname
+sed -i s/raspberrypi/$myhostname/g /etc/hosts
+hostnamectl set-hostname "$myhostname"
 
 # Disable Swap
 sudo dphys-swapfile swapoff && \
