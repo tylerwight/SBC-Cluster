@@ -9,14 +9,13 @@ if [ `whoami` != 'root' ]
     exit
 fi
 
-echo "Changing password (defulat password is pine64)"
-passwd
 
 #set hostname
 echo "What hostname do you want to use?"
 read hostname
 echo "setting hostname to $hostname"
-sudo sed -i s/raspberrypi/$hostname/g /etc/hosts
+sudo echo "$hostname" > /etc/hostname
+#sudo sed -i s/raspberrypi/$hostname/g /etc/hosts
 sudo hostnamectl set-hostname '$hostname'
 
 #You can set static IPs be editing the file /etc/network/interfaces.d/eth0

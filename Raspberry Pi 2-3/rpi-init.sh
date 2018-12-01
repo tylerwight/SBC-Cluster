@@ -8,13 +8,11 @@ if [ `whoami` != 'root' ]
     exit
 fi
 
-echo "Changing password (defulat password is raspberry)"
-passwd
-
 #set hostname
 echo "What hostname do you want to use?"
 read hostname
 echo "setting hostname to $hostname"
+sudo echo "$hostname" > /etc/hostname
 sudo sed -i s/raspberrypi/$hostname/g /etc/hosts
 hostnamectl set-hostname '$hostname'
 
@@ -59,6 +57,6 @@ echo 'packages:'
 dpkg -l docker*
 dpkg -l kube*
 echo "contents of rc.local:"
-tail -n 5 /etc/rc.loal
+
 sudo apt-cache madison docker-ce
 sudo apt-cache madison kubeadm
