@@ -29,6 +29,7 @@ sudo hostname "$myhostname"
 sudo swapoff -a
 swapoff -a
 sudo sed -i '/exit 0/i \swapoff -a' /etc/rc.local
+sudo apt-get purge zram-config
 
 sudo apt-get update
 
