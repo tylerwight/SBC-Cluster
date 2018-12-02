@@ -17,6 +17,7 @@ echo "setting hostname to $myhostname"
 echo "$myhostname" > /etc/hostname
 sed -i s/pine64/$myhostname/g /etc/hosts
 hostnamectl set-hostname "$myhostname"
+sudo hostname "$myhostname"
 
 #You can set static IPs be editing the file /etc/network/interfaces.d/eth0
 #you may also need these:
@@ -26,21 +27,22 @@ hostnamectl set-hostname "$myhostname"
 
 #remove swap, and make it persistent on boot
 sudo swapoff -a
+swapoff -a
 sudo sed -i '/exit 0/i \swapoff -a' /etc/rc.local
 
 sudo apt-get update
 
-#download install script into get_docker.sh
-curl -sSL get.docker.com > get_docker.sh
-
+##download install script into get_docker.sh
+#curl -sSL get.docker.com > get_docker.sh
+sudo apt-get install -y docker.io
 # these commands may break if the get.docker.com script changes these lines, should be easy enough to find an update though.
 #These commands just comment out 2 lines that install docker. This way the script only adds the repositories,
 #so we can choose to install a specific version
-sed -i -e 's/$sh_c "$pkg_manager install -y -q docker-ce/#$sh_c "$pkg_manager install -y -q docker-ce/g' get_docker.sh
-sed -i -e 's/$sh_c "apt-get install -y -qq --no-install-recommends docker-ce/#$sh_c "apt-get install -y -qq --no-install-recommends docker-ce/g' get_docker.sh
-sh get_docker.sh
-sudo apt-cache madison docker-ce
-sudo apt-get install -y docker-ce=18.06.1~ce~3-0~ubuntu
+#sed -i -e 's/$sh_c "$pkg_manager install -y -q docker-ce/#$sh_c "$pkg_manager install -y -q docker-ce/g' get_docker.sh
+#sed -i -e 's/$sh_c "apt-get install -y -qq --no-install-recommends docker-ce/#$sh_c "apt-get install -y -qq --no-install-recommends docker-ce/g' get_docker.sh
+#sh get_docker.sh
+#sudo apt-cache madison docker-ce
+#sudo apt-get install -y docker-ce=18.06.1~ce~3-0~ubuntu
 
 #add gpg key, add repo to apt sources
 apt-get update && apt-get install -y apt-transport-https
