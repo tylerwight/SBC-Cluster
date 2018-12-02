@@ -15,7 +15,7 @@ echo "What hostname do you want to use?"
 read myhostname
 echo "setting hostname to $myhostname"
 echo "$myhostname" > /etc/hostname
-sed -i s/raspberrypi/$myhostname/g /etc/hosts
+sed -i s/pine64/$myhostname/g /etc/hosts
 hostnamectl set-hostname "$myhostname"
 
 #You can set static IPs be editing the file /etc/network/interfaces.d/eth0
