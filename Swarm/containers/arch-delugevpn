@@ -1,0 +1,20 @@
+docker run -d \
+    --cap-add=NET_ADMIN \
+    -p 8112:8112 \
+    -p 8118:8118 \
+    -p 58846:58846 \
+    -p 58946:58946 \
+    --name=deluge \
+    -v /mnt/Downloads:/data \
+    -v /home/pine64/delcfg:/config \
+    -v /etc/localtime:/etc/localtime:ro \
+    -e VPN_ENABLED=no \
+    -e STRICT_PORT_FORWARD=no \
+    -e ENABLE_PRIVOXY=no \
+    -e LAN_NETWORK=10.100.1.0/24 \
+    -e NAME_SERVERS=10.100.1.50 \
+    -e DEBUG=false \
+    -e UMASK=000 \
+    -e PUID=1000 \
+    -e PGID=1000 \
+    binhex/arch-delugevpn

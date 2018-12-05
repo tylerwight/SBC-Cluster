@@ -25,7 +25,6 @@ sudo hostname "$myhostname"
 
 #remove swap, and make it persistent on boot
 sudo swapoff -a
-swapoff -a
 sudo sed -i '/exit 0/i \swapoff -a' /etc/rc.local
 sudo apt-get purge zram-config
 sudo apt-get update
@@ -36,9 +35,6 @@ sh get_docker.sh
 sudo apt-get install -y docker-ce
 sudo apt-cache madison docker-ce
 
-
-
-#install kubelet, kubeadm, kubectl. At time of writing, I am installing 1.12.3-00
 
 sudo apt-get update
 
