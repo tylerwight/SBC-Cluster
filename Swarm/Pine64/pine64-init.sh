@@ -1,5 +1,6 @@
 #!/bin/bash
-#This script will get a Pine64 ready to execute kubeadm init/join. Using img "xenial-minimal-pine64-bspkernel-0.7.9-104.img"
+#This script will get a Pine64 ready to execute kubeadm init/join. Using img "Armbian_5.69_Pine64_Ubuntu_bionic_next_4.19.13.img"
+#https://www.armbian.com/pine64/
 #All devices have static DHCP leases, so no static IPs are set. Get ssh access and run this as root.
 
 if [ `whoami` != 'root' ]
